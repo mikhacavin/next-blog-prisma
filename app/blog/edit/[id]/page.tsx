@@ -57,6 +57,7 @@ const EditBlog = ({params} : {params: {id:string}}) => {
             console.log(error);
             toast.error("Fetching Blog Error",{id: "1"});
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
     const handleSubmit = async (e:any) => {
