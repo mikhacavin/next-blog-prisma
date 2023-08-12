@@ -1,10 +1,13 @@
 import Link from "next/link";
 
+const url = "http://localhost:3000";
+
 async function fetchBlogs() {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const res = await fetch(`${url}/api/blog`, {
     next : {
-    revalidate : 10
+    revalidate : 5
   }
+    // cache : 'no-store'
 });
 const data = await res.json();
 return data.posts;
@@ -13,6 +16,7 @@ return data.posts;
 export default async function Home() {
 const posts = await fetchBlogs();
 console.log(posts);
+
 
   return (
 <main className="w-full h-full">

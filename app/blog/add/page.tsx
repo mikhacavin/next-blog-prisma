@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Fragment, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
+const url = "http://localhost:3000";
 
 const AddBlog = () => {
     const titleRef = useRef<HTMLInputElement | null>(null);
@@ -17,7 +18,7 @@ const AddBlog = () => {
         title: string; 
         description: String;
     })=>{
-        const res = fetch(`${process.env.URL_APP}/api/blog`,{
+        const res = fetch(`${url}/api/blog`,{
             method: "POST",
             body: JSON.stringify({title, description}),
             //@ts-ignore

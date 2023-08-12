@@ -10,8 +10,11 @@ type UpdateBlogparams = {
     description : string;
     id: string;
 }
+
+const url = "http://localhost:3000";
+
 const updateBlog = async (data : UpdateBlogparams)=>{
-    const res = fetch(`${process.env.URL_APP}/api/blog/${data.id}`,{
+    const res = fetch(`${url}/api/blog/${data.id}`,{
         method: "PUT",
         body: JSON.stringify({title: data.title, description: data.description}),
         //@ts-ignore
@@ -21,7 +24,7 @@ const updateBlog = async (data : UpdateBlogparams)=>{
 }
 
 const deleteBlog = async (id: string)=>{
-    const res = fetch(`${process.env.URL_APP}/api/blog/${id}`,{
+    const res = fetch(`${url}/api/blog/${id}`,{
         method: "DELETE",
         //@ts-ignore
         "Content-Type": "application/json",
@@ -30,7 +33,7 @@ const deleteBlog = async (id: string)=>{
 }
 
 const getBlogById = async (id:string) => {
-    const res = await fetch(`${process.env.URL_APP}/api/blog/${id}`);
+    const res = await fetch(`${url}/api/blog/${id}`);
    const data = await res.json();
    return data.post;
 }
@@ -69,6 +72,7 @@ const EditBlog = ({params} : {params: {id:string}}) => {
         toast.loading("Deleting Blog", {id:"2"});
         await deleteBlog(params.id);
         toast.success("Blog Deleted Successfully", {id:"2"});
+        router.push("/");
     }
 
     return(
