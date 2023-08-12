@@ -17,7 +17,7 @@ const AddBlog = () => {
         title: string; 
         description: String;
     })=>{
-        const res = fetch("http://localhost:3000/api/blog",{
+        const res = fetch(`${process.env.URL_APP}/api/blog`,{
             method: "POST",
             body: JSON.stringify({title, description}),
             //@ts-ignore
