@@ -1,14 +1,15 @@
 import Link from "next/link";
+import { GET } from "./api/blog/route";
 
-const url = "http://localhost:3000";
+// const url = "http://localhost:3000";
 
 async function fetchBlogs() {
-  const res = await fetch(`${url}/api/blog`, {
-    next : {
-    revalidate : 5
-  }
-    // cache : 'no-store'
-});
+//   const res = await fetch(`${url}/api/blog`, {
+//     next : {
+//     revalidate : 5
+//   }
+// });
+const res = await GET();
 const data = await res.json();
 return data.posts;
 }
