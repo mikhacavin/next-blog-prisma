@@ -11,7 +11,7 @@ type UpdateBlogparams = {
     id: string;
 }
 
-const url = "http://localhost:3000";
+const url = "https://next-blog-prisma.vercel.app";
 
 const updateBlog = async (data : UpdateBlogparams)=>{
     const res = fetch(`${url}/api/blog/${data.id}`,{

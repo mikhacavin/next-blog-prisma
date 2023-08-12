@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Fragment, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-const url = "http://localhost:3000";
+const url = "https://next-blog-prisma.vercel.app";
 
 const AddBlog = () => {
     const titleRef = useRef<HTMLInputElement | null>(null);

@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { GET } from "./api/blog/route";
 
-// const url = "http://localhost:3000";
+const url = "https://next-blog-prisma.vercel.app";
 
 async function fetchBlogs() {
-//   const res = await fetch(`${url}/api/blog`, {
-//     next : {
-//     revalidate : 5
-//   }
-// });
-const res = await GET();
+  const res = await fetch(`${url}/api/blog`, {
+    next : {
+    revalidate : 5
+  }
+    // cache : 'no-store'
+});
 const data = await res.json();
 return data.posts;
 }
