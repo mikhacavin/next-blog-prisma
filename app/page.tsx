@@ -4,10 +4,10 @@ const url = "https://next-blog-prisma.vercel.app";
 
 async function fetchBlogs() {
   const res = await fetch(`${url}/api/blog`, {
-    next : {
-    revalidate : 5
-  }
-    // cache : 'no-store'
+  //   next : {
+  //   revalidate : 5
+  // }
+    cache : 'no-store'
 });
 const data = await res.json();
 return data.posts;
