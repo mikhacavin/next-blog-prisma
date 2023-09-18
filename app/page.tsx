@@ -2,21 +2,26 @@ import Link from "next/link";
 
 const url = "https://next-blog-prisma.vercel.app";
 
+type Product = {
+  id: string;
+  title: string;
+  description: string;
+  date: Date
+}
+
 async function fetchBlogs() {
   const res = await fetch(`${url}/api/blog`, {
-    next : {
-    revalidate : 5
-  }
-    // cache : 'no-store'
+  //   next : {
+  //   revalidate : 5
+  // }
+    cache : 'no-store'
 });
 const data = await res.json();
 return data.posts;
 }
 
 export default async function Home() {
-const posts = await fetchBlogs();
-console.log(posts);
-
+const posts : Product[] = await fetchBlogs();
 
   return (
 <main className="w-full h-full">
@@ -32,8 +37,8 @@ console.log(posts);
   </div>
   {/* blogs */}
   <div className="w-full flex flex-col justify-center items-center">
-    {posts?.map((post:any) =>(
-      <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 flex flex-col justify-center" key={post.id}>
+    {posts?.map((post, index) =>(
+      <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 flex flex-col justify-center" key={index +1}>
       {/* title and action */}
       <div className="flex items-center my-3">
         <div className="mr-auto">
